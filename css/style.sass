@@ -1,0 +1,632 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap')
+
+$main-dark: #343A40
+$main-text: #2a2a2a
+$main-color: #31CDBA
+$light-color: #ffffff
+$light-text-color: #8f8e8e
+@mixin txt-shadow()
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5)
+@mixin animated()
+    transition: all 0.2s linear
+
+*
+    padding: 0
+    margin: 0
+    box-sizing: border-box
+    font-family: 'Quicksand', sans-serif
+
+a
+    text-decoration: none
+    display: inline-block
+    color: $main-text
+ul
+    list-style-type: none
+img
+    max-width: 100%
+    height: auto
+    vertical-align: middle
+    border-style: none
+
+.container
+
+    .header-nav
+        background-color: $main-dark
+        .inner-nav
+            width: 90%
+            margin: auto
+            padding: 1em
+            display: flex
+            justify-content: space-between
+            align-items: center
+
+        #contact-nav
+            p
+                padding: 0.3rem 0
+                color: $light-color
+                display: block
+        a
+            color: $main-color
+        #social-nav
+            a
+                padding: 0.3rem
+    #main-nav
+        width: 90%
+        margin: auto
+        padding: 1em
+        display: flex
+        align-items: center
+        justify-content: space-between
+        #logo
+            a
+                font-size: 2rem
+                span
+                    color: $main-color
+        #nav-links
+            display: flex
+            // display: none
+            opacity: 0
+
+        .open
+            opacity: 1 !important
+            display: flex !important
+            flex-direction: column
+            justify-content: center
+            align-items: center
+            position: absolute
+            top: 0
+            left: 0
+            text-align: center
+            // transform: translate(-50%, 0)
+            width: 100%
+            height: 100vh
+            z-index: 6
+            background: $main-color
+            transition: all 0.5s 0.2s linear
+            li
+
+                // padding: 0 1rem
+                padding: 0.7rem 0
+                font-size: 1.1rem
+            a
+                transition: all 0.2s linear
+                &:hover
+                    color: $light-color
+
+    .menu-bar
+        position: absolute
+        right: 3rem
+        cursor: pointer
+        z-index: 9
+        @include animated()
+        &:hover
+            color: lighten($main-dark, 20%)
+
+#full-img
+    width: 100%
+    min-height: 80vh
+    background: url(../images/hero_1.jpg)
+    background-position: center
+    background-size: cover
+    background-attachment: fixed
+    display: flex
+    flex-direction: column
+    justify-content: center
+    align-items: center
+    position: relative
+    z-index: 5
+    &::after
+        content: ''
+        position: absolute
+        width: 100%
+        height: 100%
+        background: rgba(0,0,0,0.4)
+        z-index: -1
+
+    .text
+        // margin-top: -100px
+        text-align: center
+        color: $light-color
+        &>*
+            margin: 0.7rem 0
+        h1
+            font-size: 2.5rem
+            @include txt-shadow()
+        p
+            font-size: 1.2rem
+            @include txt-shadow()
+            a
+                color: $main-color
+        >a
+            background: $main-color
+            padding: 16px 24px
+            border-radius: 25px
+            text-transform: uppercase
+            transition: 0.2s linear
+            font-size: 0.8rem
+            &:hover
+                background: darken($main-color, 10%)
+                color: $light-color
+#boxes
+    display: flex
+    flex-wrap: wrap
+    justify-content: space-around
+    align-items: center
+    width: 90%
+    margin: auto
+    .box
+        max-width: 350px
+        padding: 1rem
+        line-height: 1.6rem
+        position: relative
+        & > *
+            margin: 1rem 0
+        h3
+            color: $main-color
+            font-size: 2rem
+        ul
+            // list-style-type: '\2713'
+            li
+                margin-top: 1rem
+                &::before
+                    // content: '✓'
+                    content: '\2713'
+                    color: $main-color
+                    margin-right: 10px
+                    font-weight: bold
+        &::before
+            position: absolute
+            top: 50px
+            left: -50px
+            color: lighten($main-text, 77%)
+            font-size: 8rem
+            font-weight: bold
+            z-index: -1
+        &:nth-child(1)::before
+            content: '01'
+        &:nth-child(2)::before
+            content: '02'
+        &:nth-child(3)::before
+            content: '03'
+.work
+    margin: 0 1rem
+    &-text
+        text-align: center
+        width: 70%
+        margin: 2rem auto
+        h1
+            font-size: 3rem
+            margin-bottom: 1rem
+        p
+            font-size: 1.1rem
+            color: $main-text
+    &-images
+        display: grid
+        grid-template-columns: repeat( auto-fit, minmax(350px, 1fr) )
+        grid-gap: 2rem
+        .img
+            position: relative
+            overflow: hidden
+            img
+                transition: all 0.2s linear
+
+            a
+                width: 100%
+                height: 100%
+                position: relative
+                &::after
+                    position: absolute
+                    content: ''
+                    width: 100%
+                    height: 100%
+                    top: 0
+                    left: 0
+                    background: rgba(0,0,0,0.7)
+                    opacity: 0
+                    transition: all 0.2s 0.1s linear
+                .description
+                    position: absolute
+                    top: 60%
+                    left: 50%
+                    transform: translate(-50%, -50%)
+                    text-align: center
+                    transition: all 0.2s 0.1s linear
+                    opacity: 0
+                    color: $light-color
+                    z-index: 6
+                    p
+                        text-transform: uppercase
+                        font-size: 0.9rem
+                        color: rgba(255,255,255,0.5 )
+                .fig
+                    display: none
+            &:hover
+                img
+                    transform: scale(1.1)
+                a
+                    &::after
+                        opacity: 1
+                    .description
+                        opacity: 1
+                        top: 50%
+    &-stategies
+        width: 90%
+        margin: 2rem auto
+        display: flex
+        flex-direction: column
+        background: #000
+        color: $light-color
+        .col-5
+            align-self: center
+            justify-self: center
+            text-align: center
+            img
+                padding: 2rem
+        .col-3
+            .info
+                padding: 1.6rem
+                h3
+                    font-size: 1.4rem
+                &>*
+                    padding: 0.4rem
+                a
+                    text-decoration: underline
+                    color: $light-color
+
+.testimonial
+    text-align: center
+    h2
+        font-size: 3rem
+    &-box
+        margin: 2rem 0
+        .text
+            margin: 2rem
+            font-size: 1.4rem
+        .img
+            display: flex
+            justify-content: center
+            align-items: center
+            &>*
+                margin: 0 1rem
+            img
+                width: 50px
+                height: 50px
+                border-radius: 50%
+.owl-dot.active span
+    background: $main-color !important
+
+.services
+    width: 90%
+    margin: 2rem auto
+    h2
+        text-align: center
+        font-size: 3rem
+        margin-bottom: 2rem
+    .services-box
+        display: grid
+        grid-template-columns: repeat( auto-fit, minmax(350px, 1fr) )
+        .service
+            display: flex
+            margin: 1.5rem 0
+
+        .icon
+            color: $main-color
+            padding-top: 0.5rem
+        .text
+            padding: 0 1rem
+            &>*
+                margin-bottom: 0.6rem
+            h5
+                font-size: 1.5rem
+                font-weight: normal
+            a
+                color: $main-color
+                @include animated()
+                &:hover
+                    color: darken($main-color, 15%)
+
+.about
+    width: 90%
+    margin: 3rem auto
+    .col-text
+        margin-top: 5rem
+        .about-text
+            h2
+                font-size: 3rem
+            p
+                font-size: 1.2rem
+        .links
+            margin: 2rem 0
+            display: flex
+            flex-direction: column
+            .link
+                margin: 1rem 0
+                text-align: left
+                &>*
+                    margin-top: 0.5rem
+                .icon
+                    color: #6C757D
+                h5
+                    font-size: 1.5rem
+                    font-weight: normal
+                a
+                    color: $main-color
+                    @include animated()
+                    &:hover
+                        color: darken($main-color, 15%)
+    .col-img
+        display: none
+
+.team
+    text-align: center
+    width: 90%
+    margin: auto
+    h2
+        font-size: 3rem
+        margin: 3rem 0
+    &-members
+        display: flex
+        flex-wrap: wrap
+        display: grid
+        // grid-template-columns: repeat(autofit,minmax(300px, 1fr))
+        grid-template-columns: repeat( auto-fit, minmax(350px, 1fr) )
+        .member
+            &>*
+                // padding: 1rem 0
+            img
+                width: 200px
+                height: 200px
+                border-radius: 50%
+                margin-bottom: 1rem
+            h5
+                margin-bottom: 0.5rem
+                font-size: 1.3rem
+                color: #2c2b2b
+                // font-weight: normal
+            span
+                text-transform: uppercase
+                font-size: 0.8rem
+                color: #5a5a5a
+                margin-bottom: 1rem
+                display: block
+            p
+                width: 80%
+                margin: auto
+        .social
+            margin: 1.5rem 0
+            display: flex
+            justify-content: center
+            align-items: center
+            a
+                display: flex
+                margin: 0 .5rem
+                flex-direction: column
+                justify-content: center
+                align-items: center
+                text-align: center
+                width: 30px
+                height: 30px
+                border-radius: 50%
+                background: #6C757D
+                color: $light-color
+                @include animated()
+                &:hover
+                    background: darken(#6C757D, 25%)
+
+.contact
+    // width: 90%
+    padding: 3rem
+    background: #F8F9FA
+    h2
+        padding-bottom: 3rem
+        font-size: 3rem
+        text-align: center
+    .form
+        background: $light-color
+        padding: 2.5rem
+        margin: auto
+        h3
+            margin-bottom: 2rem
+            font-size: 1.5rem
+        form
+            &>*
+                padding: 0.5rem 0
+            input, textarea
+                display: block
+                width: 100%
+                border-radius: 20px
+                outline: none
+                border: 1px solid #7777777c
+                padding: 0.7rem 1rem
+                margin: 0.5rem 0
+            input:focus, textarea:focus
+                border-color: $main-color
+            button
+                background: $main-color
+                border: none
+                outline: none
+                display: block
+                padding: 1rem 1.4rem
+                font-size: 1.1rem
+                color: $light-color
+                border-radius: 30px
+                cursor: pointer
+                @include animated()
+                &:hover
+                    background: darken($main-color, 20% )
+    .address
+        background: $light-color
+        margin: 2rem 0
+        padding: 2.5rem
+        &>*
+            margin: 1.1rem 0
+        a
+            color: $main-color
+
+.big-button
+    text-align: center
+    a
+        width: 100%
+        height: 100%
+        padding: 3rem
+        background: $main-color
+        color: $light-color
+        font-size: 2.5rem
+        @include animated()
+
+        &:hover
+            background: darken($main-color, 10%)
+
+footer
+    background: #333333
+    .sections
+        width: 90%
+        margin: auto
+        display: flex
+        flex-direction: column
+        color: $light-text-color
+        h5
+            color: $light-color
+            font-size: 1rem
+            font-weight: normal
+            margin-bottom: 1rem
+        &>*
+            margin: 1rem 0
+        &-features
+            li a
+                color: $light-text-color
+                padding: 0.5rem 0
+                @include animated()
+                &:hover
+                    color: lighten($light-text-color, 80%)
+        &-follow
+            .social-links
+                a
+                    padding: 0 0.5rem
+                    color: $light-text-color
+                    @include animated()
+                    &:hover
+                        color: lighten($light-text-color, 80%)
+        &-subscribe
+            .inputs
+                width: 100%
+                display: flex
+                input
+                    outline: none
+                    display: block
+                    outline: none
+                    border: 1px solid #7777777c
+                    padding: 0.6rem
+                    margin: 0.5rem 0
+                    font-size: 1.1rem
+                input[type="email"]
+                    flex: 1
+                    border-top-left-radius: 30px
+                    border-bottom-left-radius: 30px
+                    background: transparent
+                    color: $light-color
+                    font-size: 1.1rem
+                input[type="submit"]
+                    border-top-right-radius: 30px
+                    border-bottom-right-radius: 30px
+                    background: $main-color
+                    color: $light-color
+                    cursor: pointer
+                    @include animated()
+                    &:hover
+                        background: darken($main-color, 20% )
+    .copyright
+        text-align: center
+        color: $light-text-color
+        padding: 2rem 0
+        width: 90%
+        margin: auto
+        hr
+            border-color: $light-text-color
+            margin: 2rem auto
+
+        span
+            color: red
+
+.typed-cursor
+    animation: blinking 1s infinite forwards
+
+@keyframes blinking
+    0%
+        opacity: 1
+    50%
+        opacity: 0
+    100%
+        opacity: 1
+
+@media (min-width: 768px)
+    .container
+        #main-nav
+            position: fixed
+            z-index: 10
+            padding: 1rem 4.5rem
+            background: $light-color
+            width: 100%
+            // top: 0
+            border-bottom: 1px solid $light-text-color
+
+            // text-align: center
+            // width: 90%
+            #nav-links
+                flex-direction: row
+                opacity: 1
+                li
+                    padding: 0 1rem
+                    font-size: 1.1rem
+                    .active
+                        color: $main-color
+                        font-weight: bold
+                a
+                    &:hover
+                        color: $main-color
+        .menu-bar
+            display: none
+
+    .header-nav
+        #contact-nav
+            display: flex
+            p:last-child
+                padding-left: 1rem
+    .work-stategies
+        flex-direction: row
+    .testimonial
+        width: 60%
+        margin: auto
+    .about
+        display: flex
+        .col-text
+            margin: 0 1rem
+            flex: 2
+            .about-text
+                width: 80%
+            .links
+                width: 80%
+                flex-direction: row
+        .col-img
+            display: block
+            flex: 1
+    .contact-wrapper
+        display: flex
+        align-items: start
+        &>*
+        .form
+            margin-right: 1rem
+            width: 100%
+            flex: 3
+        .address
+            flex: 2
+            margin-left: 1rem
+            margin-top: 0
+    footer
+        .sections
+            flex-direction: row
+            padding-top: 2rem
+            &>*
+                flex: 1
+            &-about
+                flex: 2
